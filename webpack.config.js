@@ -8,8 +8,12 @@ module.exports = {
         index:'./src/index.js',
     },
     output: {
-        filename: '[name].js',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
+    },
+    devtool: "source-map",
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.less', '.css']
     },
     // mode:'development',
     module: {
@@ -32,7 +36,12 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
-            }
+            },
+            // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
+            {
+                test: /\.tsx?$/,
+                loader: "awesome-typescript-loader"
+            },
         ]
     },
     plugins: [
