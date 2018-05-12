@@ -23,6 +23,13 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             },
             {
+                test: /\.less/,
+                use: [
+                    'style-loader',
+                    'typings-for-css-modules-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&namedExport&camelCase&less!less-loader'
+                ]
+            },
+            {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: ['url-loader']
             },
