@@ -6,6 +6,12 @@ import {Router, Route, Switch, Redirect, Link} from 'react-router-dom';
 import Hello from "./router/Hello";
 import Demo from "./router/Demo";
 
+const PrivateRoute = ({ component: Component , ...rest}) => (
+    <Route {...rest} render={props => (
+        <Component {...props}/>
+    )}/>
+);
+
 ReactDom.render(
     <Router history={history} >
         <div className={styles.wrap}>
@@ -15,7 +21,8 @@ ReactDom.render(
             </ul>
             <Switch>
                 <Route exact path="/" component={Hello}/>
-                <Route path="/demo" component={Demo}/>
+                {/*<Route path="/demo" component={Demo}/>*/}
+                <PrivateRoute path="/demo" component={Demo} />
             </Switch>
         </div>
     </Router>,
