@@ -11,6 +11,7 @@ export default class TodoList extends React.Component<any, any> {
             <div>
                 <input type="text" placeholder="todo" onChange={e=>store.changeTodo(e.target.value)}/>
                 <button onClick={store.addTodo}>add</button>
+                <span>{store.count}</span>
                 <ul>
                     {todoItems.map((todo:any, index:number)=><li key={index}>{todo}</li>)}
                 </ul>
